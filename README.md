@@ -11,7 +11,7 @@
 
 ### テーマを選んだ理由
 ゲームをする仲間が欲しいと思い、作成しようと考えました。<br>
-私の趣味はゲームです。<br>
+私の趣味はゲームをすることです。<br>
 一人でプレイしている際に、一緒にゲームをしてくれる人がいたらなと思う時がありました。<br>
 コロナ禍の影響で、近年ゲームを趣味にし始めた人は増えたと思います。<br>
 私以外にも、世の中には一人でゲームをしていて物足りなさを感じている人は数多くいるはずです。<br>
@@ -40,3 +40,9 @@ https://docs.google.com/spreadsheets/d/1OS4Wfbqx72FuBJA4ZxhY9ltn7B2N6Rw_8bs20AhV
 ## 使用素材
 - O-DAN
 - https://o-dan.net/ja/
+- 半透過マルチアイコンfavicon.icoを作ろう!
+- https://ao-system.net/alphaicon/
+- designevo
+- https://www.designevo.com/
+- お名前.com
+- https://www.onamae.com/
