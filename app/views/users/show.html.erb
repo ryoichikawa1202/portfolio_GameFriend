@@ -1,0 +1,19 @@
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+<% @articles.each do |article| %>
+<div>
+  <p>投稿ユーザー画像：<%= image_tag article.user.get_profile_image(100,100) %></p>
+
+  <%= link_to article_path(article.id) do %>
+    <p>ユーザーネーム: <%= article.user.name %></p>
+    <p>ゲームタイトル: <%= article.title %></p>
+    <p>本文: <%= article.body %></p>
+  <% end %>
+</div>
+<% end %>
