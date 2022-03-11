@@ -9,5 +9,6 @@
     <p>ゲームタイトル: <%= article.title %></p>
     <p>本文: <%= article.body %></p>
   <% end %>
+  <p><%= link_to "#{article.article_comments.count}コメント", article_path(article.id) %></p>
 </div>
 <% end %>
