@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
 
-  resources :articles, only: [:new, :create, :index, :show, :destroy]
+  resources :articles, only: [:new, :create, :index, :show, :destroy] do
+    resources :article_comments, only: [:create, :destroy]
+  end
+
   resources :users, only: [:show, :edit, :update]
 
   get '/users/:id/quit' => 'users#quit', as: 'quit'
