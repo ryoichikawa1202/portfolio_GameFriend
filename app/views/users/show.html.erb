@@ -1,9 +1,16 @@
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
+  <% if @user != current_user %>
+    <%= render "relationships/btn", user: @user %>
+  <% else %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
+
+  <p>フォロー中</p>
+    <p><%= link_to @user.followings.count, user_followings_path(@user) %></p>
+  <p>フォロワー</p>
+    <p><%= link_to @user.followers.count, user_followers_path(@user) %></p>
 </div>
 
 <% @articles.each do |article| %>
