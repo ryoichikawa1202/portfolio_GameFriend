@@ -5,10 +5,16 @@ class ArticleCommentsController < ApplicationController
     comment = ArticleComment.new(article_comment_params)
     comment.user_id = current_user.id
     comment.article_id = article.id
-    comment.save
-    redirect_to article_path(article)
+    if comment.save
+      redirect_to article_path(article)
+    else
+      @error_comment = comment
+      @article = Article.find(params[:article_id])
+      @article_comment = ArticleComment.new
+      render 'articles/show'
+    end
   end
-  
+
   def destroy
     ArticleComment.find(params[:id]).destroy
     redirect_to article_path(params[:article_id])

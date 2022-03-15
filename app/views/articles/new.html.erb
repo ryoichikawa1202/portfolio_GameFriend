@@ -1,5 +1,14 @@
 <h1>新規投稿</h1>
 
+<% if @article.errors.any? %>
+  <%= @article.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @article do |f| %>
   <h4>ゲームタイトル</h4>
   <%= f.text_field :title %>
