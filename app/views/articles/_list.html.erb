@@ -1,28 +1,27 @@
-<% articles.each do |article| %>
-<div>
-  <p>投稿ユーザー画像：<%= image_tag article.user.get_profile_image(100,100) %></p>
-  <%= link_to user_path(article.user) do %>
-    <p>ユーザーネーム: <%= article.user.name %></p>
-  <% end %>
-
-  <%= link_to article_path(article.id) do %>
-    <p>ゲームタイトル: <%= article.title %></p>
-    <p>本文: <%= article.body %></p>
-  <% end %>
-  <% if article.favorited_by?(current_user) %>
-    <p>
-      <%= link_to article_favorites_path(article), method: :delete do %>
-        ♥<%= article.favorites.count %>いいね
+  <% articles.each do |article| %>
+  <div class="container border w-50 mx-auto mt-4">
+    <div class="row border-bottom d-flex align-items-center">
+      <p class="pr-2 pt-2"><%= image_tag article.user.get_profile_image(50,50), class: "rounded-circle border"; %></p>
+      <%= link_to user_path(article.user), class: "text-dark" do %>
+        <h3><%= article.user.name %></h3>
       <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to article_favorites_path(article), method: :post do %>
-        ♡<%= article.favorites.count %>いいね
+    </div>
+    <div class="row border-bottom pl-2">
+      <p class="lead"><i class="fas fa-gamepad"></i>  <%= article.title %></p>
+    </div>
+    <div class="row pl-2">
+      <%= link_to article_path(article.id), class: "text-dark" do %>
+        <p class="lead"><%= article.body %></p>
       <% end %>
-    </p>
+    </div>
+    <div class="row">
+      <div class="col-3" id="favorite_buttons_<%= article.id %>">
+        <%= render 'favorites/btn', article: article %>
+      </div>
+      <div class="col-3">
+        <%= render 'article_comments/counter', article: article %>
+      </div>
+    </div>
+  </div>
   <% end %>
-  <p><%= link_to "#{article.article_comments.count}コメント", article_path(article.id) %></p>
-</div>
-<% end %>
-<%= paginate articles %>
+  <%= paginate articles %>

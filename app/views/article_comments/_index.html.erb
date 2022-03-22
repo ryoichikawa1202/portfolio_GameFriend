@@ -1,0 +1,19 @@
+<% article.article_comments.each do |article_comment| %>
+  <div class="row d-flex flex-column mt-2">
+    <div>
+      <%= image_tag article_comment.user.get_profile_image(50,50), class: "rounded-circle border"; %>
+      <%= link_to user_path(article_comment.user), class: "text-dark" do %>
+        <%= article_comment.user.name %>
+      <% end %>
+    </div>
+    <div class="pl-2">
+      <%= article_comment.comment %><br>
+      <%= article_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      <% if article_comment.user == current_user %>
+        <%= link_to article_article_comment_path(article_comment.article,article_comment), method: :delete, class: "btn btn-danger", remote: true do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

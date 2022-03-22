@@ -1,20 +1,30 @@
-<h1>新規投稿</h1>
-
-<% if @article.errors.any? %>
-  <%= @article.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @article do |f| %>
-  <h4>ゲームタイトル</h4>
-  <%= f.text_field :title %>
-
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">新規投稿フォーム</h5>
+      <div class="form-body p-4">
+        <% if @article.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @article.errors.count %>件のエラーが発生しました
+            </h6>
+            <% @article.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= form_with model: @article do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-gamepad"></i></span>
+            </div>
+            <%= f.text_field :title, class: "form-control", placeholder: "ゲームタイトル" %>
+          </div>
+          <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "コメントここに"  %>
+          <hr>
+          <%= f.submit '投稿', class: "btn btn-lg btn-info btn-block mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
