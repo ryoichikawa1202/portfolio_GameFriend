@@ -1,0 +1,9 @@
+<div>
+  <div class="comments-error">
+    <%= render 'article_comments/error', error_comment: @error_comment %>
+  </div>
+  <%= form_with model: [article, article_comment], local:false do |f| %>
+    <%= f.text_area :comment, class: "form-control", row: '5', placeholder: "コメントをここに", class: 'comment-textarea' %>
+    <%= f.submit "送信する", class: "btn btn-info m-2 " %>
+  <% end %>
+</div>

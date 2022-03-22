@@ -1,10 +1,13 @@
-<h1>投稿一覧</h1>
+<div class="container mx-auto">
+  <h1 class="text-center mt-4">投稿一覧</h1>
+  <div class="row justify-content-center">
+    <%= search_form_for @q, url: search_articles_path do |f| %>
+    <%= f.search_field :title_cont, placeholder: "ゲームタイトル" %>
+      <%= button_tag :type => "submit", :class =>"btn btn-secondary" do %>
+        <i class="fa fa-search"></i>
+      <% end %>
+  <% end %>
+  </div>
 
-<%= search_form_for @q, url: search_articles_path do |f| %>
-  <%= f.label :title_cont, 'ゲームタイトル' %>
-  <%= f.search_field :title_cont %>
-  <br>
-  <%= f.submit '検索' %>
-<% end %>
-
-<%= render 'list', articles: @articles %>
+  <%= render 'list', articles: @articles %>
+</div>
