@@ -6,7 +6,9 @@
         <% if @user != current_user %>
           <%= render "relationships/btn", user: @user %>
         <% else %>
-          <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %></p>
+          <% if @user.name != "guestuser" %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-secondary" %></p>
+          <% end %>
         <% end %>
         <div class="row">
           <div class="col">
