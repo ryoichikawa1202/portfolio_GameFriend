@@ -8,14 +8,39 @@ ja:
       truncate: "..."
   activerecord:
     models:
+      user:
+      article:
       article_comment: 記事コメント
     attributes:
+      user:
+        name: 名前
+        password: パスワード
+        email: メールアドレス
+      article:
+        title: タイトル
+        body: コメント
       article_comment:
         comment: コメント
     errors:
       models:
+        user:
+          attributes:
+              name:
+                blank: が空です
+              password:
+                blank: が空です
+              email:
+                blank: が空です
+        article:
+          attributes:
+              title:
+                blank: が空です
+              body:
+                blank: が空です
         article_comment:
           attributes:
               comment:
                 blank: が空です
-
+  errors:
+    messages:
+      not_saved: 登録できませんでした
